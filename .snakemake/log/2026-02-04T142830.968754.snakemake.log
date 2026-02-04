@@ -1,0 +1,110 @@
+Assuming unrestricted shared filesystem usage.
+host: DESKTOP-8T79RVB
+Building DAG of jobs...
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+pm25_metrics        3
+pubmed_fetch        3
+report              1
+total               8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Feb  4 14:28:31 2026]
+localrule pm25_metrics:
+    output: results/pm25/2018/exceedance_days.csv, results/pm25/2018/monthly_means.csv, results/pm25/2018/figures/monthly_trends.png, results/pm25/2018/figures/exceedance_days.png
+    jobid: 3
+    reason: Missing output files: results/pm25/2018/exceedance_days.csv, results/pm25/2018/figures/monthly_trends.png, results/pm25/2018/monthly_means.csv, results/pm25/2018/figures/exceedance_days.png
+    wildcards: year=2018
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+Select jobs to execute...
+[Wed Feb  4 14:29:06 2026]
+Finished jobid: 3 (Rule: pm25_metrics)
+1 of 8 steps (12%) done
+Execute 1 jobs...
+[Wed Feb  4 14:29:06 2026]
+localrule pm25_metrics:
+    output: results/pm25/2017/exceedance_days.csv, results/pm25/2017/monthly_means.csv, results/pm25/2017/figures/monthly_trends.png, results/pm25/2017/figures/exceedance_days.png
+    jobid: 4
+    reason: Missing output files: results/pm25/2017/monthly_means.csv, results/pm25/2017/exceedance_days.csv, results/pm25/2017/figures/monthly_trends.png, results/pm25/2017/figures/exceedance_days.png
+    wildcards: year=2017
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+Select jobs to execute...
+[Wed Feb  4 14:29:41 2026]
+Finished jobid: 4 (Rule: pm25_metrics)
+2 of 8 steps (25%) done
+Execute 1 jobs...
+[Wed Feb  4 14:29:41 2026]
+localrule pubmed_fetch:
+    output: results/literature/2017/pubmed_papers.csv, results/literature/2017/summary_by_year.csv, results/literature/2017/top_journals.csv, results/literature/2017/papers_by_year.png
+    jobid: 7
+    reason: Missing output files: results/literature/2017/papers_by_year.png, results/literature/2017/pubmed_papers.csv, results/literature/2017/top_journals.csv, results/literature/2017/summary_by_year.csv
+    wildcards: year=2017
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+Select jobs to execute...
+[Wed Feb  4 14:29:44 2026]
+Finished jobid: 7 (Rule: pubmed_fetch)
+3 of 8 steps (38%) done
+Execute 1 jobs...
+[Wed Feb  4 14:29:44 2026]
+localrule pm25_metrics:
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/monthly_means.csv, results/pm25/2021/figures/monthly_trends.png, results/pm25/2021/figures/exceedance_days.png
+    jobid: 2
+    reason: Code has changed since last execution
+    wildcards: year=2021
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+Select jobs to execute...
+[Wed Feb  4 14:30:24 2026]
+Finished jobid: 2 (Rule: pm25_metrics)
+4 of 8 steps (50%) done
+Execute 1 jobs...
+[Wed Feb  4 14:30:24 2026]
+localrule pubmed_fetch:
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv, results/literature/2021/papers_by_year.png
+    jobid: 5
+    reason: Code has changed since last execution
+    wildcards: year=2021
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+Select jobs to execute...
+[Wed Feb  4 14:30:28 2026]
+Finished jobid: 5 (Rule: pubmed_fetch)
+5 of 8 steps (62%) done
+Execute 1 jobs...
+[Wed Feb  4 14:30:28 2026]
+localrule pubmed_fetch:
+    output: results/literature/2018/pubmed_papers.csv, results/literature/2018/summary_by_year.csv, results/literature/2018/top_journals.csv, results/literature/2018/papers_by_year.png
+    jobid: 6
+    reason: Missing output files: results/literature/2018/papers_by_year.png, results/literature/2018/summary_by_year.csv, results/literature/2018/top_journals.csv, results/literature/2018/pubmed_papers.csv
+    wildcards: year=2018
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+[Wed Feb  4 14:30:33 2026]
+Finished jobid: 6 (Rule: pubmed_fetch)
+6 of 8 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Feb  4 14:30:33 2026]
+localrule report:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2018/exceedance_days.csv, results/pm25/2017/exceedance_days.csv, results/pm25/2021/monthly_means.csv, results/pm25/2018/monthly_means.csv, results/pm25/2017/monthly_means.csv, results/pm25/2021/figures/monthly_trends.png, results/pm25/2018/figures/monthly_trends.png, results/pm25/2017/figures/monthly_trends.png, results/pm25/2021/figures/exceedance_days.png, results/pm25/2018/figures/exceedance_days.png, results/pm25/2017/figures/exceedance_days.png, results/literature/2021/pubmed_papers.csv, results/literature/2018/pubmed_papers.csv, results/literature/2017/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2018/summary_by_year.csv, results/literature/2017/summary_by_year.csv, results/literature/2021/top_journals.csv, results/literature/2018/top_journals.csv, results/literature/2017/top_journals.csv, results/literature/2021/papers_by_year.png, results/literature/2018/papers_by_year.png, results/literature/2017/papers_by_year.png
+    output: results/report_task4.md
+    jobid: 1
+    reason: Input files updated by another job: results/literature/2021/pubmed_papers.csv, results/pm25/2017/figures/exceedance_days.png, results/pm25/2021/figures/monthly_trends.png, results/literature/2018/top_journals.csv, results/literature/2017/papers_by_year.png, results/pm25/2018/figures/monthly_trends.png, results/pm25/2017/monthly_means.csv, results/pm25/2017/figures/monthly_trends.png, results/literature/2017/top_journals.csv, results/pm25/2018/exceedance_days.csv, results/literature/2021/papers_by_year.png, results/pm25/2021/exceedance_days.csv, results/pm25/2021/figures/exceedance_days.png, results/pm25/2021/monthly_means.csv, results/literature/2018/summary_by_year.csv, results/literature/2017/summary_by_year.csv, results/pm25/2018/monthly_means.csv, results/pm25/2017/exceedance_days.csv, results/literature/2021/summary_by_year.csv, results/literature/2018/papers_by_year.png, results/literature/2021/top_journals.csv, results/literature/2017/pubmed_papers.csv, results/pm25/2018/figures/exceedance_days.png, results/literature/2018/pubmed_papers.csv
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+[Wed Feb  4 14:30:34 2026]
+Finished jobid: 1 (Rule: report)
+7 of 8 steps (88%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Feb  4 14:30:34 2026]
+localrule all:
+    input: results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/report_task4.md
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+[Wed Feb  4 14:30:34 2026]
+Finished jobid: 0 (Rule: all)
+8 of 8 steps (100%) done
+Complete log(s): C:\Users\agnie\Desktop\ztp\ZTP_zad3\.snakemake\log\2026-02-04T142830.968754.snakemake.log

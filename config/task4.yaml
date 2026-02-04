@@ -1,0 +1,13 @@
+years: [2024, 2018]
+
+pm25:
+  cities:
+    - Warszawa
+    - Katowice
+
+  daily_norm: 15
+
+pubmed:
+  query: "(PM2.5 OR particulate matter) AND Poland"
+  email: "am.prudlo@student.uw.edu.pl"
+  limit: 200

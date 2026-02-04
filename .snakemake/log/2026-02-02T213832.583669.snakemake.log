@@ -1,0 +1,76 @@
+Assuming unrestricted shared filesystem usage.
+host: DESKTOP-8T79RVB
+Building DAG of jobs...
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+pm25_metrics        2
+report              1
+total               4
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Feb  2 21:38:33 2026]
+localrule pm25_metrics:
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/monthly_means.csv, results/pm25/2021/figures/monthly_trends.png, results/pm25/2021/figures/exceedance_days.png
+    jobid: 1
+    reason: Missing output files: results/pm25/2021/monthly_means.csv, results/pm25/2021/exceedance_days.csv, results/pm25/2021/figures/monthly_trends.png
+    wildcards: year=2021
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+Select jobs to execute...
+[Mon Feb  2 21:39:03 2026]
+Finished jobid: 1 (Rule: pm25_metrics)
+1 of 4 steps (25%) done
+Execute 1 jobs...
+[Mon Feb  2 21:39:03 2026]
+localrule pm25_metrics:
+    output: results/pm25/2024/exceedance_days.csv, results/pm25/2024/monthly_means.csv, results/pm25/2024/figures/monthly_trends.png, results/pm25/2024/figures/exceedance_days.png
+    jobid: 2
+    reason: Missing output files: results/pm25/2024/figures/monthly_trends.png, results/pm25/2024/monthly_means.csv, results/pm25/2024/exceedance_days.csv
+    wildcards: year=2024
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+[Mon Feb  2 21:39:29 2026]
+Finished jobid: 2 (Rule: pm25_metrics)
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Feb  2 21:39:29 2026]
+localrule report:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2021/monthly_means.csv, results/pm25/2024/monthly_means.csv, results/pm25/2021/figures/monthly_trends.png, results/pm25/2024/figures/monthly_trends.png, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2024/summary_by_year.csv, results/literature/2021/top_journals.csv, results/literature/2024/top_journals.csv
+    output: results/report_task4.md
+    jobid: 5
+    reason: Missing output files: results/report_task4.md; Input files updated by another job: results/pm25/2024/figures/monthly_trends.png, results/pm25/2021/exceedance_days.csv, results/pm25/2024/monthly_means.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2021/monthly_means.csv, results/pm25/2021/figures/monthly_trends.png
+    resources: tmpdir=C:\Users\agnie\AppData\Local\Temp
+RuleException:
+CalledProcessError in file "C:\Users\agnie\Desktop\ztp\ZTP_zad3\Snakefile_task4", line 54:
+Command 'python src/report/generate_report.py             --config config/task4.yaml             --output results/report_task4.md' returned non-zero exit status 1.
+[Mon Feb  2 21:39:30 2026]
+Error in rule report:
+    message: None
+    jobid: 5
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2021/monthly_means.csv, results/pm25/2024/monthly_means.csv, results/pm25/2021/figures/monthly_trends.png, results/pm25/2024/figures/monthly_trends.png, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2024/summary_by_year.csv, results/literature/2021/top_journals.csv, results/literature/2024/top_journals.csv
+    output: results/report_task4.md
+    shell:
+        
+        python src/report/generate_report.py             --config config/task4.yaml             --output results/report_task4.md
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Mon Feb  2 21:39:30 2026]
+Error in rule report:
+    message: None
+    jobid: 5
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2021/monthly_means.csv, results/pm25/2024/monthly_means.csv, results/pm25/2021/figures/monthly_trends.png, results/pm25/2024/figures/monthly_trends.png, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2024/summary_by_year.csv, results/literature/2021/top_journals.csv, results/literature/2024/top_journals.csv
+    output: results/report_task4.md
+    shell:
+        
+        python src/report/generate_report.py             --config config/task4.yaml             --output results/report_task4.md
+        
+        (command exited with non-zero exit code)
+Complete log(s): C:\Users\agnie\Desktop\ztp\ZTP_zad3\.snakemake\log\2026-02-02T213832.583669.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

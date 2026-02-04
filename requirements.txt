@@ -1,6 +1,0 @@
-pytest
-matplotlib
-pandas
-numpy
-seaborn
-requests

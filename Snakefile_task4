@@ -1,0 +1,61 @@
+configfile: "config/task4.yaml"
+
+YEARS = config["years"]
+
+rule all:
+    input:
+        "results/report_task4.md"
+
+rule pm25_metrics:
+    output:
+        exceed="results/pm25/{year}/exceedance_days.csv",
+        monthly="results/pm25/{year}/monthly_means.csv",
+        monthly_plot="results/pm25/{year}/figures/monthly_trends.png",
+        exceedance_plot="results/pm25/{year}/figures/exceedance_days.png"
+    params:
+        cities=config["pm25"]["cities"],
+        norm=config["pm25"]["daily_norm"]
+    shell:
+        """
+        python src/pm25/running_pm25.py \
+            --year {wildcards.year} \
+            --daily_norm {params.norm} \
+            --cities {params.cities} \
+            --outdir results/pm25/{wildcards.year} \
+        """
+
+
+rule pubmed_fetch:
+    output:
+        papers="results/literature/{year}/pubmed_papers.csv",
+        summary="results/literature/{year}/summary_by_year.csv",
+        journals="results/literature/{year}/top_journals.csv",
+        papers_by_year="results/literature/{year}/papers_by_year.png"
+    shell:
+        """
+        python src/literature/pubmed_fetch.py \
+            --year {wildcards.year} \
+            --config config/task4.yaml
+        """
+
+
+rule report:
+    input:
+        pm25_exceed=expand("results/pm25/{year}/exceedance_days.csv", year=YEARS),
+        pm25_monthly=expand("results/pm25/{year}/monthly_means.csv", year=YEARS),
+        pm25_figs_monthly=expand("results/pm25/{year}/figures/monthly_trends.png", year=YEARS),
+        lit_papers=expand("results/literature/{year}/pubmed_papers.csv", year=YEARS),
+        lit_summary=expand("results/literature/{year}/summary_by_year.csv", year=YEARS),
+        lit_journals=expand("results/literature/{year}/top_journals.csv", year=YEARS),
+        lit_figs=expand("results/literature/{year}/papers_by_year.png", year=YEARS)
+    output:
+        "results/report_task4.md"
+    shell:
+        """
+        python src/report/generate_report.py \
+            --config config/task4.yaml \
+            --output {output}
+        """
+
+
+

@@ -1,0 +1,9 @@
+Assuming unrestricted shared filesystem usage.
+host: DESKTOP-8T79RVB
+Building DAG of jobs...
+MissingInputException in rule report in file "C:\Users\agnie\Desktop\ztp\ZTP_zad3\Snakefile_task4", line 42:
+Missing input files for rule report:
+    output: results/report_task4.md
+    affected files:
+        results/pm25/2021/figures
+        results/pm25/2024/figures
