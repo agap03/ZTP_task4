@@ -11,17 +11,19 @@ years: [2021, 2024]
 
 Następnie wpisuje w terminalu:
 
-snakemake -s Snakefile_task4 --cores 1
+    snakemake -s Snakefile_task4 --cores 1
 
 lub:
 
-snakemake -s Snakefile_task4 --cores 1 --rerun-triggers checksum
+    snakemake -s Snakefile_task4 --cores 1 --rerun-triggers checksum
 
 To pierwsze wywyołanie jest domyśne - Snakemake sprawdza, czy pliki wynikowe są aktualne na podstawie czasu modyfikacji (mtime). Można wymusić ponowne policzenie plików wynikowych tylko wtedy, gdy zawartość wejść się zmieniła, używając flagi --rerun-triggers checksum. Dzięki temu pipeline reaguje na zmiany danych nawet jeśli ich timestamp się nie zmienił.
 
 ## Scenariusz działania
 
-1) Użytkownik ustawia:
+1) 
+
+Użytkownik ustawia:
 
 - years: [2021, 2024]
 
@@ -35,7 +37,9 @@ Pipeline:
 - uruchamia kod pubmed_fetch.py dla lat 2021 i 2024
 - uruchamia kod generate_report.py i generuje raport dla {2021, 2024}
 
-2) Użytkownik zmienia config na:
+2) 
+
+Użytkownik zmienia config na:
 
 - years: [2019, 2024]
 
@@ -52,36 +56,36 @@ Pipeline:
 
 Przy uruchomieniu linijki:
 
-snakemake -s Snakefile_task4 --cores 1 --summary
+    snakemake -s Snakefile_task4 --cores 1 --summary
 
 
 Pojawia się informacja, którep pliki są aktualne, a które muszą zostać przeliczone od nowa.
 
 Po uruchomieniu programu wyświetla się również informacja typu:
 
-Job stats:
-job             count
-`------------  -------`
-all                 1
-pm25_metrics        2
-pubmed_fetch        2
-report              1
-total               6
+    Job stats:
+    job             count
+    ------------  -------
+    all                 1
+    pm25_metrics        2
+    pubmed_fetch        2
+    report              1
+    total               6
 
 Widać tutaj, że pm25_metrics i pubmed_fetch uruchamiają sie dla dwóch lat. Jeśli nie byłoby potrzeby uruchomienia ich dla któregoś roku informacja ta wyglądałaby tak:
 
-Job stats:
-job             count
-`------------  -------`
-all                 1
-pm25_metrics        1
-pubmed_fetch        1
-report              1
-total               4
+    Job stats:
+    job             count
+    ------------  -------
+    all                 1
+    pm25_metrics        1
+    pubmed_fetch        1
+    report              1
+    total               4
 
 Jeśli wszystkie pliki są aktualne, po uruchomieniu programu dostajemy informację:
 
-""Nothing to be done (all requested files are present and up to date).""
+    Nothing to be done (all requested files are present and up to date).
 
 ## Zawartość repozytorium
 
