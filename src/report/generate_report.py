@@ -19,7 +19,7 @@ def top_words(titles, n=10):
 
     for t in titles.dropna():
         for w in t.lower().split():
-            w = w.strip(".,!?()[]:;\"'")
+            w = w.strip(".,!-?()[]:;\"'")
             if w and w not in stopwords:
                 words.append(w)
     return Counter(words).most_common(n)
@@ -65,15 +65,13 @@ def main():
     out.append(result.to_markdown(index=True))
     out.append("\n")
 
-    out.append(
-        "Średnie miesięczne wartości PM2.5 (uśrednione po wszystkich stacjach).\n"
-    )
 
     # For each year, include exceedance days plot
     for y in years:
         out.append(f"**Liczba dni z przekroczeniem normy PM2.5 dla roku {y} (najwyższe i najniższe wartości):**\n")
         out.append(f"![Dni przekroczeń PM2.5](pm25/{y}/figures/exceedance_days.png)\n")
 
+    out.append("## Średnie miesięczne:\n")
     # For each year, include monthly means and plots
     for y in years:
         out.append(f"### Rok {y}\n")
@@ -85,7 +83,6 @@ def main():
         out.append(monthly.to_markdown(index=False))
         out.append("\n")
 
-        out.append("**Trend średnich miesięcznych:**\n")
         out.append(f"![Trend PM2.5 {y}](pm25/{y}/figures/monthly_trends.png)\n")
 
 
@@ -116,7 +113,8 @@ def main():
             out.append(f"- {t}")
         out.append("\n")
 
-
+    
+    out.append(f"### Dodatkowa analiza tytułów\n")
     # dodatkowa analiza tytułów i wykres porównawczy
     df_compare = []
 
